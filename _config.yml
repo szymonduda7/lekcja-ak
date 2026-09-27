@@ -2,8 +2,8 @@ title: "Materiały z lekcji Roblox Studio"
 description: "Kody i materiały z zajęć Roblox Studio."
 lang: pl
 timezone: Europe/Warsaw
-url: "https://szymonduda7.github.io"
-baseurl: "/lekcja-ak"
+url: "https://lekcja-ak.pl"
+baseurl: ""
 
 exclude:
   - BLUEPRINT-LEKCJI.md
