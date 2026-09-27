@@ -1,6 +1,6 @@
 # Blueprint do tworzenia lekcji
 
-Skopiuj cały prompt poniżej do ChatGPT. Uzupełnij wyłącznie sekcję **DANE LEKCJI** i dołącz potrzebne materiały. ChatGPT powinien przygotować jeden gotowy plik, który wystarczy dodać do katalogu strony, zatwierdzić i wysłać na GitHub.
+Skopiuj cały prompt poniżej do ChatGPT. Uzupełnij wyłącznie sekcję **DANE LEKCJI** i dołącz potrzebne materiały. Dołącz też plik `lava.html` jako wzór wyglądu, żeby nowa lekcja wyglądała identycznie. ChatGPT powinien przygotować jeden gotowy plik, który wystarczy dodać do katalogu strony, zatwierdzić i wysłać na GitHub.
 
 ## Prompt
 
@@ -43,9 +43,9 @@ permalink: /[krotki-slug-bez-polskich-znakow]/
    - pozbawiona zewnętrznych bibliotek,
    - zgodna z GitHub Pages.
 
-5. Zachowaj prosty, spokojny wygląd: jasnoszare tło, białe sekcje z cienką ramką (bez cieni i gradientów), ciemne bloki kodu, niebieski przycisk „Kopiuj kod” w pasku nad kodem, font systemowy, bez emoji. Skopiuj sekcję <style> 1:1 z pliku lava.html.
+5. Wygląd w stylu Akademii Kodowania: grafitowy nagłówek (#2b2b2a) z pomarańczową linią na dole, ciepłe jasne tło (#f6f5f3), białe sekcje z cienką ramką, nagłówki fontem Roboto Slab, pomarańczowe akcenty (#eb6608), ciemne bloki kodu z pomarańczowym przyciskiem „Kopiuj kod” w pasku nad kodem. Bez cieni, gradientów i emoji. Jeśli dołączono plik lava.html, skopiuj z niego 1:1 linki do fontu, całą sekcję <style> i strukturę nagłówka (<header class="top">) oraz sekcji.
 
-6. Na początku strony dodaj link „← Wróć do wszystkich lekcji” z atrybutem href="{{ '/' | relative_url }}" (dokładnie tak, bez zmieniania na „/”).
+6. W nagłówku strony (<header class="top">) dodaj link „← Wróć do wszystkich lekcji” z atrybutem href="{{ '/' | relative_url }}" (dokładnie tak, bez zmieniania na „/”).
 
 7. Każdy skrypt Lua umieść w osobnej sekcji zawierającej:
    - zrozumiałą nazwę,
@@ -67,7 +67,7 @@ permalink: /[krotki-slug-bez-polskich-znakow]/
 
 11. Nie zmieniaj działania przekazanych skryptów Lua. Możesz poprawić formatowanie i wcięcia. Jeżeli zauważysz błąd logiczny, opisz go dopiero po wygenerowanym pliku, bez cichego zmieniania kodu.
 
-12. Nie dodawaj reklam, analityki, zewnętrznych fontów, frameworków ani linków do innych serwisów.
+12. Nie dodawaj reklam, analityki, frameworków ani linków do innych serwisów. Jedynym dozwolonym zewnętrznym zasobem jest font Roboto Slab z Google Fonts (tak jak w lava.html).
 
 13. Sprawdź przed odpowiedzią, czy:
     - metadane zawierają lesson: true,
