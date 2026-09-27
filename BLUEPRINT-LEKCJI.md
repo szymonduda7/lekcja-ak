@@ -45,7 +45,7 @@ permalink: /[krotki-slug-bez-polskich-znakow]/
 
 5. Zachowaj prosty, spokojny wygląd: jasnoszare tło, białe sekcje z cienką ramką (bez cieni i gradientów), ciemne bloki kodu, niebieski przycisk „Kopiuj kod” w pasku nad kodem, font systemowy, bez emoji. Skopiuj sekcję <style> 1:1 z pliku lava.html.
 
-6. Na początku strony dodaj link „← Wróć do wszystkich lekcji” prowadzący do „/”.
+6. Na początku strony dodaj link „← Wróć do wszystkich lekcji” z atrybutem href="{{ '/' | relative_url }}" (dokładnie tak, bez zmieniania na „/”).
 
 7. Każdy skrypt Lua umieść w osobnej sekcji zawierającej:
    - zrozumiałą nazwę,
