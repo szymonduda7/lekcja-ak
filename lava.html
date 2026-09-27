@@ -1,0 +1,192 @@
+---
+layout: null
+lesson: true
+title: "Parkour — lawa, monety i meta"
+date: 2026-09-27
+description: "Gotowe skrypty do punktów, monet, lawy, obrotu i mety."
+permalink: /lava/
+---
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gotowe skrypty do punktów, monet, lawy, obrotu i mety.">
+  <title>Parkour — gotowe skrypty</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f6fa; color: #202b42; font: 16px/1.5 system-ui, "Segoe UI", Arial, sans-serif; }
+    main { max-width: 900px; padding: 32px 18px 70px; margin: auto; }
+    h1 { margin: 12px 0 24px; font-size: clamp(2rem, 7vw, 3rem); line-height: 1.1; }
+    .back { display: inline-flex; align-items: center; gap: 7px; color: #2448bd; font-weight: 700; text-decoration: none; }
+    .back:hover { text-decoration: underline; }
+    section { margin: 18px 0; padding: 20px; border: 1px solid #dce3f0; border-radius: 15px; background: white; box-shadow: 0 5px 18px #20355a0b; }
+    h2 { margin: 0; font-size: 1.35rem; }
+    .place { margin: 5px 0 15px; color: #596d91; }
+    .head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 12px; border-radius: 10px 10px 0 0; background: #253657; color: #fff; }
+    button { padding: 8px 12px; border: 0; border-radius: 7px; background: #dce7ff; color: #163479; font-weight: 700; cursor: pointer; }
+    button:focus-visible, .back:focus-visible { outline: 4px solid #f7b73188; outline-offset: 3px; }
+    pre { margin: 0; padding: 18px; overflow: auto; border-radius: 0 0 10px 10px; background: #121a2b; color: #eaf1ff; font: 14px/1.6 Consolas, Monaco, monospace; }
+    @media print { section { break-inside: avoid; box-shadow: none; } button, .back { display: none; } pre { white-space: pre-wrap; background: #f2f2f2; color: black; } .head { background: #e5e5e5; color: black; } }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="/">← Wróć do wszystkich lekcji</a>
+    <h1>Parkour — gotowe skrypty</h1>
+
+    <section>
+      <h2>Wyniki</h2>
+      <p class="place">ServerScriptService → Script</p>
+      <div class="head"><span>Wyniki</span><button type="button" data-copy="leaderboard">Kopiuj kod</button></div>
+      <pre id="leaderboard">local Gracze = game:GetService(&quot;Players&quot;)
+
+Gracze.PlayerAdded:Connect(function(gracz)
+    local wyniki = Instance.new(&quot;Folder&quot;)
+    wyniki.Name = &quot;leaderstats&quot;
+    wyniki.Parent = gracz
+
+    local pkt = Instance.new(&quot;IntValue&quot;)
+    pkt.Name = &quot;Punkty&quot;
+    pkt.Value = 0
+    pkt.Parent = wyniki
+
+    local wygrane = Instance.new(&quot;IntValue&quot;)
+    wygrane.Name = &quot;Wygrane&quot;
+    wygrane.Value = 0
+    wygrane.Parent = wyniki
+end)</pre>
+    </section>
+
+    <section>
+      <h2>KodMonety</h2>
+      <p class="place">Workspace → Moneta → Script</p>
+      <div class="head"><span>KodMonety</span><button type="button" data-copy="coin">Kopiuj kod</button></div>
+      <pre id="coin">local Gracze = game:GetService(&quot;Players&quot;)
+local moneta = script.Parent
+local zebrana = false
+
+moneta.Touched:Connect(function(dotyk)
+    if zebrana then return end
+
+    local postac = dotyk.Parent
+    local gracz = Gracze:GetPlayerFromCharacter(postac)
+    if not gracz then return end
+
+    local pkt = gracz:FindFirstChild(&quot;leaderstats&quot;)
+    if not pkt then return end
+    pkt = pkt:FindFirstChild(&quot;Punkty&quot;)
+    if not pkt then return end
+
+    zebrana = true
+    pkt.Value += 1
+
+    local przezroczystosc = moneta.Transparency
+    local naklejki = {}
+    for _, obiekt in ipairs(moneta:GetDescendants()) do
+        if obiekt:IsA(&quot;Decal&quot;) or obiekt:IsA(&quot;Texture&quot;) then
+            naklejki[obiekt] = obiekt.Transparency
+            obiekt.Transparency = 1
+        end
+    end
+
+    moneta.Transparency = 1
+    moneta.CanTouch = false
+
+    task.wait(5)
+    moneta.Transparency = przezroczystosc
+    for obiekt, stara in pairs(naklejki) do
+        if obiekt.Parent then
+            obiekt.Transparency = stara
+        end
+    end
+    moneta.CanTouch = true
+    zebrana = false
+end)</pre>
+    </section>
+
+    <section>
+      <h2>KodObrotu</h2>
+      <p class="place">Workspace → Moneta → Script</p>
+      <div class="head"><span>KodObrotu</span><button type="button" data-copy="obrot">Kopiuj kod</button></div>
+      <pre id="obrot">local moneta = script.Parent
+
+while moneta.Parent do
+    moneta.CFrame = moneta.CFrame * CFrame.Angles(0, math.rad(1), 0)
+    task.wait(0.03)
+end</pre>
+    </section>
+
+    <section>
+      <h2>KodLawy</h2>
+      <p class="place">Workspace → Lawa → Script</p>
+      <div class="head"><span>KodLawy</span><button type="button" data-copy="kill">Kopiuj kod</button></div>
+      <pre id="kill">local lawa = script.Parent
+
+lawa.Touched:Connect(function(dotyk)
+    local postac = dotyk.Parent
+    local zycie = postac:FindFirstChildOfClass(&quot;Humanoid&quot;)
+
+    if zycie then
+        zycie.Health = 0
+    end
+end)</pre>
+    </section>
+
+    <section>
+      <h2>KodMety</h2>
+      <p class="place">Workspace → Meta → Script</p>
+      <div class="head"><span>KodMety</span><button type="button" data-copy="finish">Kopiuj kod</button></div>
+      <pre id="finish">local Gracze = game:GetService(&quot;Players&quot;)
+local meta = script.Parent
+local konczy = {}
+
+meta.Touched:Connect(function(dotyk)
+    local gracz = Gracze:GetPlayerFromCharacter(dotyk.Parent)
+    if not gracz or konczy[gracz] then return end
+
+    local wyniki = gracz:FindFirstChild(&quot;leaderstats&quot;)
+    local pkt = wyniki and wyniki:FindFirstChild(&quot;Punkty&quot;)
+    local wygrane = wyniki and wyniki:FindFirstChild(&quot;Wygrane&quot;)
+    if not pkt or not wygrane then return end
+    if pkt.Value &lt; 10 then return end
+
+    konczy[gracz] = true
+    pkt.Value = 0
+    wygrane.Value += 1
+
+    task.wait(2)
+    if gracz.Parent then
+        gracz:LoadCharacter()
+    end
+    konczy[gracz] = nil
+end)
+
+Gracze.PlayerRemoving:Connect(function(gracz)
+    konczy[gracz] = nil
+end)</pre>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const originalLabel = button.textContent;
+        const code = document.getElementById(button.dataset.copy);
+
+        try {
+          await navigator.clipboard.writeText(code.textContent);
+          button.textContent = "Skopiowano ✓";
+        } catch {
+          button.textContent = "Zaznacz kod ręcznie";
+        }
+
+        window.setTimeout(() => {
+          button.textContent = originalLabel;
+        }, 1800);
+      });
+    });
+  </script>
+</body>
+</html>
