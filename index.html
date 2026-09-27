@@ -275,7 +275,8 @@ description: Kody i materiały z zajęć Roblox Studio.
             {% if lesson.description %}
               <p>{{ lesson.description | escape }}</p>
             {% endif %}
-            <a class="lesson-link" href="{{ lesson.url | relative_url }}">Otwórz materiały</a>
+            {% assign lesson_url = lesson.url | append: "/" | replace: "//", "/" %}
+            <a class="lesson-link" href="{{ lesson_url | relative_url }}">Otwórz materiały</a>
           </li>
         {% endfor %}
       </ol>
