@@ -43,7 +43,7 @@ permalink: /[krotki-slug-bez-polskich-znakow]/
    - pozbawiona zewnętrznych bibliotek,
    - zgodna z GitHub Pages.
 
-5. Zachowaj spójny, prosty wygląd: jasne tło, białe sekcje, granatowe bloki kodu, niebieskie przyciski i duże czytelne nagłówki.
+5. Zachowaj prosty, spokojny wygląd: jasnoszare tło, białe sekcje z cienką ramką (bez cieni i gradientów), ciemne bloki kodu, niebieski przycisk „Kopiuj kod” w pasku nad kodem, font systemowy, bez emoji. Skopiuj sekcję <style> 1:1 z pliku lava.html.
 
 6. Na początku strony dodaj link „← Wróć do wszystkich lekcji” prowadzący do „/”.
 

@@ -16,19 +16,20 @@ permalink: /lava/
   <style>
     :root { color-scheme: light; }
     * { box-sizing: border-box; }
-    body { margin: 0; background: #f4f6fa; color: #202b42; font: 16px/1.5 system-ui, "Segoe UI", Arial, sans-serif; }
-    main { max-width: 900px; padding: 32px 18px 70px; margin: auto; }
-    h1 { margin: 12px 0 24px; font-size: clamp(2rem, 7vw, 3rem); line-height: 1.1; }
-    .back { display: inline-flex; align-items: center; gap: 7px; color: #2448bd; font-weight: 700; text-decoration: none; }
+    body { margin: 0; background: #f5f6f8; color: #1b2230; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 820px; margin: 0 auto; padding: 36px 20px 64px; }
+    .back { color: #2f5bd3; font-size: 0.95rem; font-weight: 500; text-decoration: none; }
     .back:hover { text-decoration: underline; }
-    section { margin: 18px 0; padding: 20px; border: 1px solid #dce3f0; border-radius: 15px; background: white; box-shadow: 0 5px 18px #20355a0b; }
-    h2 { margin: 0; font-size: 1.35rem; }
-    .place { margin: 5px 0 15px; color: #596d91; }
-    .head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 12px; border-radius: 10px 10px 0 0; background: #253657; color: #fff; }
-    button { padding: 8px 12px; border: 0; border-radius: 7px; background: #dce7ff; color: #163479; font-weight: 700; cursor: pointer; }
-    button:focus-visible, .back:focus-visible { outline: 4px solid #f7b73188; outline-offset: 3px; }
-    pre { margin: 0; padding: 18px; overflow: auto; border-radius: 0 0 10px 10px; background: #121a2b; color: #eaf1ff; font: 14px/1.6 Consolas, Monaco, monospace; }
-    @media print { section { break-inside: avoid; box-shadow: none; } button, .back { display: none; } pre { white-space: pre-wrap; background: #f2f2f2; color: black; } .head { background: #e5e5e5; color: black; } }
+    h1 { margin: 14px 0 28px; font-size: clamp(1.75rem, 5vw, 2.25rem); line-height: 1.2; font-weight: 700; }
+    section { margin: 0 0 20px; padding: 20px; border: 1px solid #e1e4ea; border-radius: 10px; background: #fff; }
+    h2 { margin: 0; font-size: 1.2rem; font-weight: 600; }
+    .place { margin: 2px 0 14px; color: #667085; font-size: 0.95rem; }
+    .head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 10px 8px 14px; border-radius: 8px 8px 0 0; background: #1f2633; color: #9aa4b5; font: 13px/1.4 Consolas, Monaco, monospace; }
+    button { padding: 5px 12px; border: 0; border-radius: 6px; background: #2f5bd3; color: #fff; font: 600 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; cursor: pointer; }
+    button:hover { background: #244ab5; }
+    button:focus-visible, .back:focus-visible { outline: 2px solid #2f5bd3; outline-offset: 2px; }
+    pre { margin: 0; padding: 16px; overflow: auto; border-radius: 0 0 8px 8px; background: #161b24; color: #e6e9ef; font: 14px/1.6 Consolas, Monaco, monospace; tab-size: 4; }
+    @media print { section { break-inside: avoid; } button, .back { display: none; } pre { white-space: pre-wrap; background: #f2f2f2; color: #000; } .head { background: #e5e5e5; color: #000; } }
   </style>
 </head>
 <body>
@@ -39,7 +40,7 @@ permalink: /lava/
     <section>
       <h2>Wyniki</h2>
       <p class="place">ServerScriptService → Script</p>
-      <div class="head"><span>Wyniki</span><button type="button" data-copy="leaderboard">Kopiuj kod</button></div>
+      <div class="head"><span>Script</span><button type="button" data-copy="leaderboard">Kopiuj kod</button></div>
       <pre id="leaderboard">local Gracze = game:GetService(&quot;Players&quot;)
 
 Gracze.PlayerAdded:Connect(function(gracz)
@@ -62,7 +63,7 @@ end)</pre>
     <section>
       <h2>KodMonety</h2>
       <p class="place">Workspace → Moneta → Script</p>
-      <div class="head"><span>KodMonety</span><button type="button" data-copy="coin">Kopiuj kod</button></div>
+      <div class="head"><span>Script</span><button type="button" data-copy="coin">Kopiuj kod</button></div>
       <pre id="coin">local Gracze = game:GetService(&quot;Players&quot;)
 local moneta = script.Parent
 local zebrana = false
@@ -109,7 +110,7 @@ end)</pre>
     <section>
       <h2>KodObrotu</h2>
       <p class="place">Workspace → Moneta → Script</p>
-      <div class="head"><span>KodObrotu</span><button type="button" data-copy="obrot">Kopiuj kod</button></div>
+      <div class="head"><span>Script</span><button type="button" data-copy="obrot">Kopiuj kod</button></div>
       <pre id="obrot">local moneta = script.Parent
 
 while moneta.Parent do
@@ -121,7 +122,7 @@ end</pre>
     <section>
       <h2>KodLawy</h2>
       <p class="place">Workspace → Lawa → Script</p>
-      <div class="head"><span>KodLawy</span><button type="button" data-copy="kill">Kopiuj kod</button></div>
+      <div class="head"><span>Script</span><button type="button" data-copy="kill">Kopiuj kod</button></div>
       <pre id="kill">local lawa = script.Parent
 
 lawa.Touched:Connect(function(dotyk)
@@ -137,7 +138,7 @@ end)</pre>
     <section>
       <h2>KodMety</h2>
       <p class="place">Workspace → Meta → Script</p>
-      <div class="head"><span>KodMety</span><button type="button" data-copy="finish">Kopiuj kod</button></div>
+      <div class="head"><span>Script</span><button type="button" data-copy="finish">Kopiuj kod</button></div>
       <pre id="finish">local Gracze = game:GetService(&quot;Players&quot;)
 local meta = script.Parent
 local konczy = {}
